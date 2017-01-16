@@ -1,0 +1,142 @@
+;;
+;; bbad@ngi.it
+;;
+;; This file is under GPL LICENSE
+;;
+;; You can use this file copying it in your home (es: ~/.wmrc)
+;; and run emacs19 in this way: emacs19 -q -l ~/.wmrc
+;; man emacs for details
+;; the main file wm-mode.el must be in you load path
+;; ex: ~/.emacs.d/lisp/wm-mode.el
+
+;; columns too
+(setq-default column-number-mode t)
+
+;; no other modes
+(setq auto-mode-alist nil)
+
+;; Aggiungiamo la mia dir al load-path di Emacs (vedi FAQ)
+;; (setq load-path (cons "~/share/emacs/site-lisp/" load-path))
+
+;; then set wormstar mode
+(autoload 'wormstar "wm-mode.el" "WorMstar" t)
+;; for every file use wm-mode
+(setq auto-mode-alist
+	(append '(("\\.*\\'" . wormstar)) auto-mode-alist))
+
+;; No beeps, only flashes
+(setq visible-bell t)
+
+;; Next to insert and see 8 bit chars
+
+(standard-display-european 1)
+
+(set-input-mode (car (current-input-mode))
+                (nth 1 (current-input-mode))
+                0)
+
+;; This to insert some 8 bit chars with a Ctrl prefix
+;; (usually C-x 8 in emacs but C-p 8 in wormstar)
+;; or Alt
+
+(load "iso-transl")
+
+;; Here we change C-x8 to C-p8
+(define-key key-translation-map "\C-p8" iso-transl-ctl-x-8-map)
+
+;; A sentence ends with one space
+
+(setq sentence-end "[.?!][]\"')]*\\($\\|\t\\| \\)[ \t\n]*")
+(setq sentence-end-double-space nil)
+
+;; set C-h to backward-delete-char and set Alt-? for help
+(global-unset-key "\C-h")
+(global-set-key "\M-?" 'help-for-help)
+(global-set-key "\C-h" 'backward-delete-char)
+
+
+;; Home and End key in my keyboard under FreeBSD
+(global-set-key [kp-7] 'beginning-of-buffer)
+(global-set-key [kp-1] 'end-of-buffer)
+(global-set-key [\M-kp-7] 'beginning-of-buffer-other-window)
+
+;; Alt-RET for new comment line
+(global-set-key "\M-\C-m" 'indent-new-comment-line)
+
+;; No menu bar
+(menu-bar-mode -1)
+
+;; No recenter line on scrolling
+(setq-default scroll-step 1)
+
+;; Option for lpr command (right for me but to change for you!)
+;; man lpr for -P option
+(setq lpr-switches '("-Praw"))
+
+;; %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+;;
+;;                   POSTSCRIPT PRINTING
+;;
+;;                 !!! WARNING WARNING !!!
+;; The values of next variables are good for ps-print for emacs 19.34!!
+;; I use it as my personal wordstar improved...
+;; If you use more recent version of emacs for WorMstar you *MUST*
+;; change these values and perhaps the names of some of
+;; them. Example: in emacs 21.1 ps-paper-type must be "a4" and not "ps-a4".
+;; You should read comments in ps-print.el package or look at ps-*
+;; variables and functions while in emacs.
+;;
+;; With these I have no standard header on pages but a
+;; simple header on A4 paper type with page number.
+
+(setq ps-lpr-switches '("-Plp"))
+(setq ps-paper-type 'ps-a4)
+(setq ps-header-lines 1)
+(setq ps-show-n-of-n nil)
+(setq ps-print-header-frame nil)
+
+;; I adjust margins for my needs
+
+(setq ps-left-margin 86)
+(setq ps-right-margin 58)
+(setq ps-bottom-margin 72)
+
+;; and line and font sizes
+;; all these produce a standard 60x30 typewritten-like page
+;; using Courier fixed font.
+
+(setq ps-line-height 23.33333333333)
+(setq ps-font-size 12)
+
+;; No newlines with next-line at the end of file
+(setq next-line-add-newlines nil)
+
+;;;;;;;;;;; END POSTSCRIPT PRINTING ;;;;;;;;;;;;;;;;;
+
+;; And now we adjust some faces
+
+(set-face-foreground 'modeline' "yellow")
+(set-face-background 'modeline' "firebrick")
+
+(set-face-foreground 'italic "red")
+(set-face-foreground 'bold-italic "green")
+
+(set-face-foreground 'region "blue")
+(set-face-background 'region "gold")
+(set-face-underline-p 'region nil)
+
+;; Secondary selection obtained with ALT+Mouse
+(set-face-foreground 'secondary-selection "gold")
+(set-face-background 'secondary-selection "blue")
+
+;; The face of Block in wormstar is defined in wm-mode.el
+
+;; upcase-region True
+(put 'upcase-region 'disabled nil)
+
+;; Set wormstar as major-mode
+(setq default-major-mode 'wormstar)
+(setq initial-major-mode 'wormstar)
+
+;; starts wormstar
+(wormstar)

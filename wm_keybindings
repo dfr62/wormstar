@@ -1,0 +1,371 @@
+======================================================================
+
+                KEYBINDINGS FOR WORMSTAR MODE
+
+        (Names of function are self-explaining I think...)
+
+        Notes: C-u is normal universal-argument like in emacs.
+               Some WM functions acts different with
+               argument: that is explained where is the case
+               (normal emacs functions behave like they usual do...)
+
+               For HELP you can use F1 key (like C-h in emacs) or
+               C-j C-j.
+
+               To see on screen all bindings of a prefix key you can
+               do: Ctrl-key Ctrl-H.
+               Example: C-k C-h show all bindings of C-k prefix
+
+               All WorMstar functions names begin with wm- and
+               you can use the emacs help to find them and
+               read their (short) explanations.
+
+        NB: With prefix keys the sequences
+            <Ctrl-key1 + Ctrl-key2>  and  <Ctrl-key1 + key2>
+            are the same.
+
+======================================================================
+
+
+-----------
+Single keys
+-----------
+
+C-a		backward-word
+C-b		wm-fill-par * If justify is T, justify as well. With arg fill Block. 
+C-c		scroll-up
+C-d		forward-char
+C-e		previous-line
+C-f		forward-word
+C-g		delete-char
+C-h		backward-delete-char
+C-i		indent-for-tab-command
+C-j		Prefix Command
+C-k		Prefix Command
+C-l		wm-repeat-search * With arg inverts direction of search
+C-n		open-line
+C-o		Prefix Command
+C-p		Prefix Command
+C-q		Prefix Command
+C-r		scroll-down
+C-s		backward-char
+C-t		kill-word
+C-u		universal-argument
+C-v		overwrite-mode
+C-w		wm-scroll-down-line
+C-x		next-line
+C-y		wm-kill-line
+C-z		wm-scroll-up-line
+C-_		undo
+C-SPC		keyboard-escape-quit
+
+
+--------------------------------------------------------
+Map with C-j prefix (for windows, buffers & help window)
+--------------------------------------------------------
+
+C-j C-b		switch-to-buffer
+C-j C-e		wm-prev-window
+C-j C-j		wm-help-me
+C-j C-u		list-buffers
+C-j C-x		wm-next-window
+C-j +		enlarge-window
+C-j -		shrink-window
+C-j /		split-window-horizontally
+C-j 0		delete-window
+C-j 1		delete-other-windows
+C-j 2		split-window-vertically
+
+
+------------------------------------------------------------
+Map with C-k prefix (file, blocK and some editing functions)
+------------------------------------------------------------
+
+C-k C-a		wm-mark-paragraph
+C-k C-b		wm-block-start * With arg redefine Start of Block
+C-k C-c		wm-block-copy * With arg copy the active Block
+C-k C-d		write-file
+C-k C-e		find-file
+C-k C-f		wm-dired
+C-k C-g		wm-block-show-hide
+C-k C-i		Prefix Command
+C-k C-j		wm-block-fill * With arg fill Block as one paragraph
+C-k C-k		wm-block-end * With arg redefine End of Block
+C-k C-l		wm-mark-line
+C-k C-m		Prefix Command
+C-k C-n		wm-block-toggle-rect
+C-k C-o		find-file-other-window
+C-k C-p		wm-print
+C-k C-q		kill-buffer
+C-k C-r		insert-file
+C-k C-s		save-buffer
+C-k C-t		wm-mark-word
+C-k C-u		wm-block-unset
+C-k C-v		wm-block-move
+C-k C-w		wm-block-write
+C-k C-x		save-buffers-kill-emacs
+C-k C-y		wm-block-delete * With arg fill with blanks if rect ON
+C-k C-z		suspend-emacs
+C-k ,		wm-refontify
+C-k /		wm-block-pipe * If arg or null Block, pipe entire buffer
+C-k 0		wm-set-mark-0
+C-k 1		wm-set-mark-1
+C-k 2		wm-set-mark-2
+C-k 3		wm-set-mark-3
+C-k 4		wm-set-mark-4
+C-k 5		wm-set-mark-5
+C-k 6		wm-set-mark-6
+C-k 7		wm-set-mark-7
+C-k 8		wm-set-mark-8
+C-k 9		wm-set-mark-9
+C-k >		wm-block-append
+C-k [		backward-kill-sentence
+C-k ]		kill-sentence
+C-k {		backward-kill-paragraph
+C-k }		kill-paragraph
+C-k ~		wm-block-active * With arg append (only stream)
+
+
+C-k maps for registers (Insert from reg. and Move to reg.)
+------------------------------------------------------------
+
+C-k C-i 9	wm-get-reg-9
+C-k C-i 8	wm-get-reg-8
+C-k C-i 7	wm-get-reg-7
+C-k C-i 6	wm-get-reg-6
+C-k C-i 5	wm-get-reg-5
+C-k C-i 4	wm-get-reg-4
+C-k C-i 3	wm-get-reg-3
+C-k C-i 2	wm-get-reg-2
+C-k C-i 1	wm-get-reg-1
+C-k C-i 0	wm-get-reg-0
+
+C-k C-m 9	wm-block-reg-9 * Block into register 9. With argument append
+C-k C-m 8	wm-block-reg-8 * Block into register 8. With argument append
+C-k C-m 7	wm-block-reg-7 * Block into register 7. With argument append
+C-k C-m 6	wm-block-reg-6 * Block into register 6. With argument append
+C-k C-m 5	wm-block-reg-5 * Block into register 5. With argument append
+C-k C-m 4	wm-block-reg-4 * Block into register 4. With argument append
+C-k C-m 3	wm-block-reg-3 * Block into register 3. With argument append
+C-k C-m 2	wm-block-reg-2 * Block into register 2. With argument append
+C-k C-m 1	wm-block-reg-1 * Block into register 1. With argument append
+C-k C-m 0	wm-block-reg-0 * Block into register 0. With argument append
+
+
+--------------------------------------------------------
+Map with C-o prefix (Options and editing functions)
+--------------------------------------------------------
+
+C-o C-a		wm-center-paragraph
+C-o C-b		wm-center-block
+C-o C-c		wm-center-line
+C-o C-d		downcase-word
+C-o C-f		wm-toggle-case
+C-o C-g		bookmark-jump
+C-o C-j		wm-toggle-just
+C-o C-k		wm-block-fill
+C-o C-l		wm-left-margin
+C-o C-m		bookmark-set
+C-o C-o		toggle-read-only
+C-o C-p		capitalize-word
+C-o C-r		wm-right-margin
+C-o C-u		upcase-word
+C-o C-w		wm-toggle-wrap
+
+
+--------------------------------------------------------------
+Map with C-p prefix (Printing and printing oriented functions)
+--------------------------------------------------------------
+
+C-p C-e		wm-me * with arg unmap
+C-p C-i		wm-print-set-filter
+C-p C-n		wm-font-size
+C-p C-o		wm-troff-bold
+C-p C-q		wm-print-mode
+C-p C-r		wm-troff-roman
+C-p C-t		wm-troff-italic
+C-p C-v		wm-print-preview
+C-p C-z		wm-troff-bold-italic
+
+C-p 8	<prefix command to insert 8 bit chars (like ^X8 in emacs)>
+
+
+----------------------------------------------------------------
+Map with C-q prefix (Quick movements and some editing functions)
+----------------------------------------------------------------
+
+C-q C-a		wm-query-replace
+C-q C-b		wm-block-goto-start
+C-q C-c		end-of-buffer
+C-q C-d		end-of-line
+C-q C-e		wm-point-top * With arg point to top
+C-q C-f		wm-search-2 * With arg search backwards
+C-q C-g		wm-kill-bol
+C-q C-i		goto-line
+C-q C-j		quoted-insert
+C-q C-k		wm-block-goto-end
+C-q C-l		wm-point-center * With arg point at middle
+C-q C-p		wm-jump-ring
+C-q C-r		beginning-of-buffer
+C-q C-s		beginning-of-line
+C-q C-t		backward-kill-word
+C-q C-u		wm-undo
+C-q C-v		wm-goto-search-start
+C-q C-w		wm-continuous-up * with arg scroll arg lines
+C-q C-x		wm-point-bottom * With arg point at bottom
+C-q C-y		kill-line
+C-q C-z		wm-continuous-down * with arg scroll arg lines
+C-q 0		wm-goto-mark-0
+C-q 1		wm-goto-mark-1
+C-q 2		wm-goto-mark-2
+C-q 3		wm-goto-mark-3
+C-q 4		wm-goto-mark-4
+C-q 5		wm-goto-mark-5
+C-q 6		wm-goto-mark-6
+C-q 7		wm-goto-mark-7
+C-q 8		wm-goto-mark-8
+C-q 9		wm-goto-mark-9
+C-q [		backward-sentence
+C-q ]		forward-sentence
+C-q {		backward-paragraph
+C-q }		wm-forward-paragraph * With arg forward arg paragraphs
+C-q DEL		wm-kill-bol
+
+
+-----------------------------------------------
+Other Emacs bindings (not properly fo WorMstar)
+-----------------------------------------------
+
+f1		help-command
+f2		2C-command
+f10		tmm-menubar
+C-M-backspace	backward-kill-sexp
+C-M-delete	backward-kill-sexp
+C-delete	backward-kill-word
+C-left		backward-word
+C-right		forward-word
+M-left		backward-word
+M-right		forward-word
+C-insert	kill-ring-save
+C-next		scroll-left
+C-prior		scroll-right
+C-down		forward-paragraph
+C-up		backward-paragraph
+
+C--		negative-argument
+C-9		digit-argument
+C-8		digit-argument
+C-7		digit-argument
+C-6		digit-argument
+C-5		digit-argument
+C-4		digit-argument
+C-3		digit-argument
+C-2		digit-argument
+C-1		digit-argument
+C-0		digit-argument
+C-/		undo
+
+ESC C-@		mark-sexp
+ESC C-a		beginning-of-defun
+ESC C-b		backward-sexp
+ESC C-c		exit-recursive-edit
+ESC C-d		down-list
+ESC C-e		end-of-defun
+ESC C-f		forward-sexp
+ESC C-h		mark-defun
+ESC C-i		complete-tag
+ESC C-j		indent-new-comment-line
+ESC C-k		kill-sexp
+ESC C-l		reposition-window
+ESC RET		indent-new-comment-line
+ESC C-n		forward-list
+ESC C-o		split-line
+ESC C-p		backward-list
+ESC C-r		isearch-backward-regexp
+ESC C-s		isearch-forward-regexp
+ESC C-t		transpose-sexps
+ESC C-u		backward-up-list
+ESC C-v		scroll-other-window
+ESC C-w		append-next-kill
+ESC ESC		Prefix Command
+ESC C-\		indent-region
+ESC SPC		just-one-space
+ESC !		shell-command
+ESC $		ispell-word
+ESC %		query-replace
+ESC '		abbrev-prefix-mark
+ESC (		insert-parentheses
+ESC )		move-past-close-and-reindent
+ESC ,		tags-loop-continue
+ESC -		negative-argument
+ESC .		find-tag
+ESC /		dabbrev-expand
+ESC 0 .. ESC 9	digit-argument
+ESC :		eval-expression
+ESC ;		indent-for-comment
+ESC <		beginning-of-buffer
+ESC =		count-lines-region
+ESC >		end-of-buffer
+ESC ?		help-for-help
+ESC @		mark-word
+ESC \		delete-horizontal-space
+ESC ^		delete-indentation
+ESC `		tmm-menubar
+ESC a		backward-sentence
+ESC b		backward-word
+ESC c		capitalize-word
+ESC d		kill-word
+ESC e		forward-sentence
+ESC f		forward-word
+ESC g		facemenu-keymap
+ESC h		mark-paragraph
+ESC i		tab-to-tab-stop
+ESC j		indent-new-comment-line
+ESC k		kill-sentence
+ESC l		downcase-word
+ESC m		back-to-indentation
+ESC q		fill-paragraph
+ESC r		move-to-window-line
+ESC t		transpose-words
+ESC u		upcase-word
+ESC v		scroll-down
+ESC w		kill-ring-save
+ESC x		execute-extended-command
+ESC y		yank-pop
+ESC z		zap-to-char
+ESC {		backward-paragraph
+ESC |		shell-command-on-region
+ESC }		forward-paragraph
+ESC ~		not-modified
+ESC DEL		backward-kill-word
+
+ESC S-C-v	scroll-other-window-down
+ESC C-.		find-tag-regexp
+ESC C-/		dabbrev-completion
+ESC C-SPC	mark-sexp
+ESC C--		negative-argument
+ESC C-9		digit-argument
+ESC C-8		digit-argument
+ESC C-7		digit-argument
+ESC C-6		digit-argument
+ESC C-5		digit-argument
+ESC C-4		digit-argument
+ESC C-3		digit-argument
+ESC C-2		digit-argument
+ESC C-1		digit-argument
+ESC C-0		digit-argument
+
+M-g d		facemenu-set-default
+M-g b		facemenu-set-bold
+M-g i		facemenu-set-italic
+M-g l		facemenu-set-bold-italic
+M-g u		facemenu-set-underline
+M-g o		facemenu-set-face
+
+mode-line C-mouse-2		mouse-split-window-horizontally
+mode-line mouse-3		mouse-delete-window
+mode-line mouse-2		mouse-delete-other-windows
+mode-line down-mouse-1		mouse-drag-mode-line
+mode-line drag-mouse-1		mouse-select-window
+mode-line mouse-1		mouse-select-window
+
